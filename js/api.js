@@ -7,7 +7,10 @@ const loadAi = async() =>{
 const displayAi = aiList =>{
   const aiContainer = document.getElementById('ai-container');
   // display 6 ai only
-  aiList = aiList.slice(0,6);
+  const seeMore = document.getElementById('btn-see-more');
+  if(aiList.length > 6){
+    aiList = aiList.slice(0,6);
+  }
   aiList.forEach(ai => {
     const aiDiv = document.createElement('div');
     aiDiv.classList.add('col');
@@ -19,8 +22,9 @@ const displayAi = aiList =>{
               </div>
               <div class="card-footer d-flex justify-content-between">
               <div><h5 class="card-title">${ai.name}</h5>
-              <small class="text-muted">Last updated 3 mins ago</small> </div>
-               <div> <button id="btn-details" type="button" class="btn btn-light">Light</button> </div>
+              <small class="text-muted">${ai.published_in
+              }</small> </div>
+               <div> <button id="btn-details" type="button" class="btn btn-light">Details</button> </div>
               </div>
             </div>
             `
@@ -29,6 +33,6 @@ const displayAi = aiList =>{
 } 
 
 // document.getElementById('btn-see-more').addEventListener('click',function(){
-//   const 
+//   const seeMoreField = document.getElementById('')
 // })
 loadAi();
