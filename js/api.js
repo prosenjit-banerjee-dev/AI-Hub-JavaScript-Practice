@@ -13,10 +13,14 @@ const displayAi = (aiList) => {
     aiDiv.classList.add('col');
     aiDiv.innerHTML = `
     <div class="card h-100">
-        <img src="${ai.image}" class="card-img-top" alt="...">
+      <img src="${ai.image}" class="card-img-top" alt="...">
       <div class="card-body">
-        <p class="card-text">Features <ol><li>${ai.features}</li></ol></p>
-              </div>
+        <p class="card-text">Features <ol>
+        <li>${ai.features[0]}</li>
+        <li>${ai.features[1]}</li>
+        <li>${ai.features[2]}</li>
+        </ol></p>
+      </div>
       <div class="card-footer d-flex justify-content-between">
         <div><h5 class="card-title">${ai.name}</h5>
           <small class="text-muted">${ai.published_in
