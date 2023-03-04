@@ -89,9 +89,13 @@ const displayAiDetails = ai =>{
                     <li>${ai.features[3].feature_name}</ul></p>
                 </div>
                 <div>
-                  <p>Integrations<ul><li>${ai.integrations[0]}
-                    <li>${ai.integrations[1]}
-                    <li>${ai.integrations[2]}</ul></p>
+                  <p>Integrations
+                  <ul>
+                  <li>${ai.integrations ? ai.integrations[0] : 'no data found'}</li>
+                  <li>${ai.integrations ? ai.integrations[1] : 'no data found'}</li>
+                  <li>${ai.integrations ? ai.integrations[2] : 'no data found'}</li>
+                    </ul>
+                    </p>
                 </div>
               </div>
             </div>
@@ -103,8 +107,8 @@ const displayAiDetails = ai =>{
                 <button class="btn btn-danger">${ai.accuracy['score']}</button>
               </div>
               <div> 
-                <p>${ai.input_output_examples[0].input}</p>
-                <p>${ai.input_output_examples[0].output}</p>
+                <p>${ai.input_output_examples ? ai.input_output_examples[0].input : 'no data found'}</p>
+                <p>${ai.input_output_examples ? ai.input_output_examples[0].output : 'no data found'}</p>
               </div>
 
             </div>
