@@ -2,15 +2,12 @@ const loadAi = async () => {
   const url = `https://openapi.programming-hero.com/api/ai/tools`
   const res = await fetch(url);
   const data = await res.json();
-  displayAi(data.data.tools);
+  displayAi(data.data.tools.slice(0, 6));
 }
 const displayAi = (aiList) => {
   const aiContainer = document.getElementById('ai-container');
   // display 6 ai only
-  // if(dataLimit && ai.length === 6){
-  //   aiList = aiList.slice(0, 6);
-  // }
-    
+  aiContainer.innerHTML = '';
   aiList.forEach(ai => {
     const aiDiv = document.createElement('div');
     aiDiv.classList.add('col');
@@ -25,7 +22,7 @@ const displayAi = (aiList) => {
           <small class="text-muted">${ai.published_in
       }</small> 
         </div>
-          <div> <button onclick="loadAiDetails('${ai.id}')" id="btn-details" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#aiDetailModal">Details</button> 
+          <div> <button onclick="loadAiDetails('${ai.id}')" id="btn-details" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#aiDetailModal">Details</button> 
           </div>
           </div>
           </div>
@@ -35,7 +32,12 @@ const displayAi = (aiList) => {
   toggleSpinner(false);
 }
 
-
+const showAllDataTogether = async() =>{
+  const url = `https://openapi.programming-hero.com/api/ai/tools`
+  const res = await fetch(url);
+  const data = await res.json();
+  displayAi(data.data.tools);
+}
 
 const toggleSpinner = isLoading => {
   const loaderSection = document.getElementById('loader');
@@ -46,6 +48,7 @@ const toggleSpinner = isLoading => {
     loaderSection.classList.add('d-none');
   }
 }
+loadAi();
 const loadAiDetails = async id => {
   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`
   const res = await fetch(url);
@@ -84,4 +87,3 @@ const displayAiDetails = ai =>{
     
   }
   
-loadAi();
