@@ -13,14 +13,14 @@ const displayAi = (aiList) => {
     aiDiv.classList.add('col');
     aiDiv.innerHTML = `
     <div class="card h-100">
-      <img src="${ai.image}" class="card-img-top" alt="...">
+        <img src="${ai.image}" class="card-img-top" alt="...">
       <div class="card-body">
         <p class="card-text">Features <ol>
         <li>${ai.features[0]}</li>
         <li>${ai.features[1]}</li>
         <li>${ai.features[2]}</li>
         </ol></p>
-      </div>
+              </div>
       <div class="card-footer d-flex justify-content-between">
         <div><h5 class="card-title">${ai.name}</h5>
           <small class="text-muted">${ai.published_in
@@ -64,27 +64,52 @@ const displayAiDetails = ai =>{
     const modalContainer = document.getElementById('aiDetailModalContainer');
     const div = document.createElement('div');
     div.innerHTML = `
-    <div class="col card h-100 card-body">
-    <h1 class="fs-3 text-start">${ai.description ? ai.description : 'No description'}</h1>
-    <div class="d-flex">
-    <div>
-    <p>Features:
-    <ul><li>${ai.features[1].feature_name}
-    <li>${ai.features[2].feature_name}
-    <li>${ai.features[3].feature_name}</ul></p>
-  </div>
-  <div>
-    <p>Integrations<ul><li>${ai.integrations[0]}
-    <li>${ai.integrations[1]}
-    <li>${ai.integrations[2]}</ul></p>
-      
-    </div>
-    <img src="${ai.image_link[0]}" class="card-img-top" alt="...">
-    <p>${ai.input_output_examples[0].input}</p>
-    <p>${ai.input_output_examples[0].output}</p>
-    <div> ${ai.accuracy.description}</div>
-    </div>
-    </div>  
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col-sm-6">
+            <div class="card">
+              <div>
+                <h5 class="card-title">${ai.description}</h5>
+              </div>
+              <div class="row gap-4">
+                <div class="col border border-warning-subtle rounded ">
+                  <p class="text-danger">$10/month Basic</p>
+                </div>
+                <div class="col">
+                  <p class="text-danger">$15/month Pro</p>
+                </div>
+                <div class="col">
+                  <p class="text-danger">$Contact us Enterprise</p>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div>
+                  <p>Features:
+                    <ul><li>${ai.features[1].feature_name}
+                    <li>${ai.features[2].feature_name}
+                    <li>${ai.features[3].feature_name}</ul></p>
+                </div>
+                <div>
+                  <p>Integrations<ul><li>${ai.integrations[0]}
+                    <li>${ai.integrations[1]}
+                    <li>${ai.integrations[2]}</ul></p>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+              <div>
+                <img src="${ai.image_link[0]}" class="card-img-top" alt="...">
+                <button class="btn btn-danger">${ai.accuracy['score']}</button>
+              </div>
+              <div> 
+                <p>${ai.input_output_examples[0].input}</p>
+                <p>${ai.input_output_examples[0].output}</p>
+              </div>
+
+            </div>
+        </div>   
+      </div> 
     `
     modalContainer.innerText = '';
     modalContainer.appendChild(div);
